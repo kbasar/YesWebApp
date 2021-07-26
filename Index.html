@@ -1,0 +1,150 @@
+<!--
+  LOGIN GOOGLE SCRIPT
+  -----------------------------------------------------
+ * Code by : khairul|basar
+ * contact me : khairul.basar@gmail.com
+ * Date : July 2021
+ * License :  
+ * 
+ */
+-->
+<!DOCTYPE html>
+<html>
+   <head>
+     <base target="_top">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <?! include("JS1"); ?> 
+   </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://drive.google.com/uc?id=1O3bsf2lUJZ4GtNsLO4NFUt8xR6QYu0MS" alt="" width="150" >
+        <h2>IML Group.</h2>
+      </div>
+      <div class="alert alert-success" role="alert" style="display:none"></div>
+      <div class="alert alert-warning" role="alert" style="display:none">
+      <h5>Attention!</h5>
+      <p>You must allow location access on the browser in order to be able to take geolocation.</p>
+      </div>
+      <div class="alert alert-danger" role="alert" style="display:none">
+      <h5>Failed!</h5>
+      <p>You are not registered.</p>
+      </div>
+      <div id="formdiv">
+      <form class="row" onsubmit="submitAbsensi();return false;">
+        <div class="col-md-12">
+          <h4 class="mb-3"></h4>
+            <div class="mb-3" id="user">
+              <label for="idPegawai">User ID</label>
+              <input type="text" class="form-control" id="idPegawai" placeholder="Enter your ID" required>
+            </div>
+            <div class="mb-3" id="pass">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            </div>
+            <hr class="mb-4">
+            <!-- // -->
+            <!-- // -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Login</button>
+        </div>
+      </form>
+    </div>
+      <div class="alert alert-info" role="alert" style="display:none" id="info"></div>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2021 IML Group.</p>
+      </footer>
+    </div>
+
+   
+    <script>
+      function submitAbsensi(){
+        $('.alert-warning').show();
+        if (navigator.geolocation)
+          navigator.geolocation.getCurrentPosition(simpanDataAbsensi);
+      }
+      function simpanDataAbsensi(position) {
+        $('.alert').hide();
+        $('.btn').attr('disabled',true).html('Saving...');
+        let data = {
+          idPegawai : $('#idPegawai').val(),
+          password : $('#password').val(),
+          position  : [
+            position.coords.latitude,
+            position.coords.longitude
+          ]
+        };
+        //console.log(data);
+        google.script.run.withSuccessHandler(callbackAbsensi).submitAbsensi(data);
+      }
+      function callbackAbsensi(msg){
+        if(msg){
+          $('.alert-success').html('<h5>Welcome, '+msg+'!</h5><p>You have logged in.</p>').show();
+          $('.form-control').val('');
+          
+          hideLogin();
+          showInfo();
+        }
+        else {
+          $('.alert-danger').show();
+          $('#password').val('');
+        }
+        $('.btn').removeAttr('disabled').html('Login');
+      }
+
+      function hideLogin(){
+        var x = $("#user");
+        x.hide();
+        var y = $("#pass");
+        y.hide();
+        $("#formdiv").hide();
+      }
+
+        function showInfo(){
+         $("#info").show();
+
+        // var txt1 = "<p>Select page to continue.</p>";        // Create text with HTML
+        // var text2 = $("<p></p>").text("pageAnchor"); 
+        // Create text with jQuery
+        // var txt3 = document.createElement("p");
+        // txt3.innerHTML = "Daily Service Record Form.";         // Create text with DOM
+
+        // var pageUrl = "?page=page2";
+        // // var pageCaption = "Daily Service Record Form.";
+        // var pageAnchor = "<a href='"+url+pageUrl+'\'>'+pageCaption+"</a>";
+
+
+
+        // $("#info").append(txt1, txt2, txt3);   // Append new elements
+
+          showForms();
+      }
+
+  function showForms() {
+    function onSuccess(url){
+      // $('#info').html('<h5>This will have buttons, url='+url+'!</h5>');
+      let ordersupportFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSejY2SWYZtzxp7p_FwVHlOcZI3pAQIiwjD665-V5-N4-sd9Uw/viewform";
+
+         // $('#info').html('<a href='+ordersupportFormUrl+'>'+ 'Order and Support Form</a>');
+      // $('#info').html('<a href='+url+'?page=page1'+'>'+ 'Page1</a>').show();
+      // $('#info').html('<a href='+url+'?page=userPage1'+'>'+ 'Your Space</a>').show();
+      window.location.href = url+'?page=userPage1';
+      // $('#info').html('<a href='+url+'?page=page2'+'>'+ 'Page2</a>').show();
+     
+      // $('#info').html('<h5>This will have buttons, url='+url+'!</h5><p> click on it</p>').show();
+      
+     
+      // $('#info').html('<h5>This will have buttons, url='+url+'!</h5><p> click on it</p>').show();
+      
+    }
+    let url =google.script.run.withSuccessHandler(onSuccess)
+          .getScriptUrl();
+      
+      }
+
+    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>

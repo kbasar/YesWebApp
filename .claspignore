@@ -1,0 +1,16 @@
+##ignore all files...
+#**/**
+#**/casouselPart.html
+#**/thebandPart.html
+#**/tourPart.html
+
+#except the .extensions
+!appsscript.json
+!**/*.gs
+!**/*.js
+!**/*.ts
+!**/*.html
+
+#ignore even valid files if in following directories
+.git/**
+node_modules/**

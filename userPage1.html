@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme The Band</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <?!= include('JS1'); ?>
+  <?!= include('JS1-form-validation'); ?>
+  <?!= include('STYLE'); ?>
+  <?!= include('CSS-Validation'); ?>
+  
+  
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">IML Group.</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#myPage">HOME</a></li>
+        <li><a href="#band">Maintenance</a></li>
+        <li><a href="#tour">Security</a></li> -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu"><?var url = getScriptUrl();?>
+            <li><a href='<?=url?>'>Logout</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSejY2SWYZtzxp7p_FwVHlOcZI3pAQIiwjD665-V5-N4-sd9Uw/viewform">Order and Support Form</a></li>
+            <li><a href='https://docs.google.com/forms/d/e/1FAIpQLSdHKgflNsstGe6Z0Ua7qjLWs9GXEtB8ri2JCxEUJA1jc8mR5g/viewform'>Maintenance Form</a></li>
+          </ul>
+        </li>
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+<!---carousell-->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="https://www.w3schools.com/bootstrap/ny.jpg" alt="New York" width="1200" height="700">
+      <div class="carousel-caption">
+        <h3>New York</h3>
+        <p>The atmosphere in New York is lorem ipsum.</p>
+      </div>      
+    </div>
+
+    <div class="item">
+      <img src="https://www.w3schools.com/bootstrap/chicago.jpg" alt="Chicago" width="1200" height="700">
+      <div class="carousel-caption">
+        <h3>Chicago</h3>
+        <p>Thank you, Chicago - A night we won't forget.</p>
+      </div>      
+    </div>
+  
+    <div class="item">
+      <img src="https://www.w3schools.com/bootstrap/la.jpg" alt="Los Angeles" width="1200" height="700">
+      <div class="carousel-caption">
+        <h3>LA</h3>
+        <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+      </div>      
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div>
+  <!-- removed indicator-->
+  <!-- <br><br><br> -->
+  <!-- <h3 class="text-center">Choose Your Service</h3>   -->
+  <hr class="mb-4">
+  <ul class="nav nav-pills flex-column flex-sm-row">
+    <li class="active"><a data-toggle="tab" href="#home">History</a></li>
+    <li><a data-toggle="tab" href="#menu2">Order</a></li>
+    <li><a data-toggle="tab" href="#menu3">Request for service</a></li>
+    <li><a data-toggle="tab" href="#menu4">Message to the CEO</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h2>Order history</h2>
+      <p>Your previous orders shall apear here...</p>
+    </div>
+
+    <div id="menu2" class="tab-pane fade">
+
+      <h2>Order Form</h2>
+      <div class = "main ml-3 mr-3 mb-3 mt-2"><?var url = getScriptUrl();?>
+        <form class= "col-12 ml-3 mr-3 p-3" name="orderform" id="orderform" onsubmit="event.preventDefault();sendOrderForm();return false;">
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <label for="TYPE">INK TYPE</label>
+        <select name="TYPE" id="TYPE" class="form-control" required>
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        </div></div>
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <label for="CYAN">CYAN Qty in litres.</label>
+        <input type="number" name="CYAN" id="CYAN" class="form-control">
+        </div></div>
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="MAGENTA">MAGENTA Qty in litres.</label>
+          <input type="number" name="MAGENTA" id="MAGENTA" class="form-control">
+        </div></div>
+       
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="YELLOW">YELLOW Qty in litres.</label>
+          <input type="number" name="YELLOW" id="YELLOW" class="form-control">
+        </div></div>
+
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="BLACK">BLACK Qty in litres.</label>
+          <input type="number" name="BLACK" id="BLACK" class="form-control">
+        </div></div>
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="CLEANSOL">Cleaning Solution in litres.</label>
+          <input type="number" name="CLEANSOL" id="CLEANSOL" class="form-control">
+        </div></div>
+
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="CLEANWAT">Cleaning Water in litres.</label>
+          <input type="number" name="CLEANWAT" id="CLEANWAT" class="form-control">
+        </div></div>
+
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitOrder">Send</button>
+        <span class="text-success" name ="message" ><?= message ?></span>      
+        <div id="display_error" name="display_error" class="text-danger" > <?=display_error?> </div>
+        </div></div><br>
+        </form>
+        </div>
+      </div>
+
+    <div id="menu3" class="tab-pane fade">
+      <h2>Request for service</h2>
+      <div class = "main ml-3 mr-3 mb-3 mt-2"><?var url = getScriptUrl();?>
+        <form .was-validated class= "col-12 ml-3 mr-3 p-3" name="reqservice" id="reqservice" onsubmit="event.preventDefault();sendServiceReq();return false" >
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <label for="MACHINETYPE">MACHINE TYPE</label>
+        <select name="MACHINETYPE" id="MACHINETYPE" class="form-control" required>
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        </div></div>
+
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="PROBLEM">What is the problem according to you.</label>
+          <select name="PROBLEM" id="PROBLEM" class="form-control" required>
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          </div></div>
+
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <label for="COMMENT">Comments/Summary/Instructions</label>
+        <input type="text" name="COMMENT" id="COMMENT" class="form-control" required>
+        </div></div>
+    
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="MACHINENO">Machine Number</label>
+          <input type="number" name="MACHINENO" id="MACHINENO" class="form-control" required>
+        </div></div>
+        <div class="form-row mb-3 ml-3 mr-3">
+          <div class="form-group">
+          <label for="COMPANY">Company Name</label>
+          <input type="text" name="COMPANY" id="COMPANY" class="form-control">
+        </div></div>
+       
+        <div class="form-row mb-3 ml-3 mr-3">
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitReqservice">Send</button>
+        <span class="text-success" name ="message" ><?= message ?></span>      
+        <div id="display_error" name="display_error" class="text-danger" > <?=display_error?> </div>
+        </div></div><br>
+        </form>
+        </div>
+    </div>
+
+    <div id="menu4" class="tab-pane fade">
+      <h2>Send your message to CEO</h2>   
+      <div id="formdiv4">
+        <form id="msg2ceo" name="msg2ceo" class="row" onsubmit="event.preventDefault();sendForm2CEO();return false">
+          <div class="col-md-12">
+            <h4 class="mb-3"></h4>
+              <!-- <div class="form-group mb-3" id="user">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" placeholder="Enter your WhatsApp number" required>
+              </div> -->
+              <div class="form-group mb-3">
+                <label for="FormControlTextarea1">Your Message</label>
+                <textarea class="form-control" name="FormControlTextarea1" id="FormControlTextarea1" rows="3" placeholder="Enter message" required></textarea>
+              </div>
+              <hr class="mb-4">
+              <!-- // -->
+              <!-- // -->
+              <input type="submit" class="btn btn-primary btn-lg btn-block" id="submit2ceo" value="Submit"/>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Image of location/map -->
+<!-- <img src="map.jpg" class="img-responsive" style="width:100%"> -->
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>Bootstrap Theme Made By <a href="https://www.mucti.com/" data-toggle="tooltip" title="Visit mucti.com">www.mucti.com</a></p> 
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+
+// function submitCEOMsg(){
+// google.script.run.withSuccessHandler(onSuccessMsg).submitCEOMsg(mobile,FormControlTextarea1);
+
+// }
+// function onSuccessMsg(){
+//   alert('Success!');
+// }
+</script>
+
+</body>
+</html>

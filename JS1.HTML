@@ -1,0 +1,116 @@
+<script>
+
+// function updateButton(email="kb@gmail.com", button ){
+//         button.value = 'Clicked by ' + email;
+//         console.log(button);
+//       }
+
+var inputs = [
+'FormControlTextarea1'
+];
+
+var inputs_reqservice = [
+'MACHINETYPE',
+'PROBLEM',
+'COMMENT',
+'MACHINENO',
+'COMPANY'
+];
+
+var inputs_order = [
+'TYPE',
+'CYAN',
+'MAGENTA',
+'YELLOW',
+'BLACK',
+'CLEANSOL',
+'CLEANWAT'
+];
+
+
+function getFormData(){
+  var output = {};
+  for(var i = 0; i < inputs.length; i++){
+      output[inputs[i]] = $('#'+inputs[i]).val();
+      // console.log(output);
+  }
+  return output;
+}
+
+function getFormData_reqservice(){
+  var output = {};
+  var inputs = inputs_reqservice;
+  for(var i = 0; i < inputs.length; i++){
+      output[inputs[i]] = $('#'+inputs[i]).val();
+      // console.log(output);
+  }
+  return output;
+}
+
+function getFormData_order(){
+  var output = {};
+  var inputs = inputs_order;
+  for(var i = 0; i < inputs.length; i++){
+      output[inputs[i]] = $('#'+inputs[i]).val();
+      // console.log(output);
+  }
+  return output;
+}
+
+
+function anotherFunc(){
+   console.log("another function btn ");
+}
+
+
+function animateBtn($btn, color){
+      $btn.value ="Message Sent.";
+      $btn.css('background', color);
+      // console.log(val);
+      // var val = google.script.run
+      //     .withSuccessHandler(updateButton)
+      //     .withUserObject($btn)
+      //     .getEmail()
+      // console.log(val);
+}
+
+
+function sendForm2CEO(){
+  console.log('sendForm2CEO')
+  console.log(getFormData());
+
+    google.script.run.withSuccessHandler(function(returnValue){
+      anotherFunc();
+      console.log("returnValue :"+returnValue);
+    }).AddRecordMsg(getFormData());
+
+    animateBtn($(this),'green');
+}
+
+function sendServiceReq(){
+  console.log('Start sendServiceReq')
+ 
+    console.log(getFormData_reqservice());
+
+    google.script.run.withSuccessHandler(function(returnValue){
+      anotherFunc();
+      console.log("returnValue :"+returnValue);
+    }).AddServiceRequest(getFormData_reqservice());
+
+    animateBtn($(this),'green');
+}
+
+function sendOrderForm(){
+  console.log('Start sendOrderForm')
+ 
+    console.log(getFormData_order());
+
+    google.script.run.withSuccessHandler(function(returnValue){
+      anotherFunc();
+      console.log("returnValue :"+returnValue);
+    }).AddOrderInks(getFormData_order());
+
+    animateBtn($(this),'green');
+}
+
+</script>

@@ -1,0 +1,87 @@
+<script>
+    // Wait for the DOM to be ready
+$(function() {
+  // Initialize form validation on the registration form.
+  // It has the name attribute "registration"
+  $("form[name='msg2ceo']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      FormControlTextarea1: "required"
+    },
+    // Specify validation error messages
+    messages: {
+        FormControlTextarea1: "Please enter your text message."
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+
+
+$("form[name='reqservice']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      MACHINETYPE: "required",
+      PROBLEM: "required",
+      COMMENT: "required",
+      MACHINENO: "required",
+      COMPANY: "required"
+    },
+    // Specify validation error messages
+    messages: {
+    MACHINETYPE: "Select Machine Type.",
+    PROBLEM: "What Is The Problem according to you.",
+    COMMENT: "Comments/Summary/Instructions required.",
+    MACHINENO: "Machine number required.",
+    COMPANY: "Company required."
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });//End of submit function
+
+  $("form[name='orderform']").validate({
+    // Specify validation rules
+    rules: {
+      // The key name on the left side is the name attribute
+      // of an input field. Validation rules are defined
+      // on the right side
+      TYPE: "required",
+      CYAN: "required",
+      MAGENTA: "required",
+      YELLOW: "required",
+      BLACK: "required",
+      CLEANSOL: "required",
+      CLEANWAT: "required"
+    },
+    // Specify validation error messages
+    messages: {
+    TYPE: "Select your ink type.",
+    CYAN: "CYAN Qty in litres",
+    MAGENTA: "MAGENTA Qty in litres.",
+    YELLOW: "YELLOW Qty in litres.",
+    BLACK: "BLACK Qty in litres.",
+    CLEANSOL: "Cleaning Solution in litres.",
+    CLEANWAT: "Clean Water in litres."
+    },
+    // Make sure the form is submitted to the destination defined
+    // in the "action" attribute of the form when valid
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });//End of submit function
+
+
+});//end of document function
+</script>
+
